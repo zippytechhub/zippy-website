@@ -1,0 +1,39 @@
+@import 'tailwindcss';
+
+:root {
+  --background: #ffffff;
+  --foreground: #171717;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #0a0a0a;
+    --foreground: #ededed;
+  }
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: Arial, Helvetica, sans-serif;
+}
+app-gradient {
+  @apply bg-gradient-to-l from-[#F600F8] to-[#08016B];
+}
+.app-bg-image {
+  @apply bg-[url('/images/onboarding-bg.svg')]  bg-cover bg-center;
+}
+
+.dark-text {
+  @apply text-[#08016B];
+}
+.dark-bg {
+  @apply bg-[#08016B]/10;
+}
