@@ -1,4 +1,5 @@
 import { Quote, Star } from 'lucide-react'
+import Image from 'next/image'
 
 const Testimonials = () => {
   const testimonials = [
@@ -82,12 +83,18 @@ const Testimonials = () => {
               </div>
 
               {/* Testimonial Text */}
-              <p className='mb-6 leading-relaxed text-gray-700'>"{testimonial.text}"</p>
+              <p className='mb-6 leading-relaxed text-gray-700'>&ldquo;{testimonial.text}&ldquo;</p>
 
               {/* User Info */}
               <div className='flex items-center space-x-4'>
                 {testimonial.img && (
-                  <img alt='team work' src={testimonial.img} className='w-12 h-12 rounded-full' />
+                  <Image
+                    src={testimonial.img}
+                    alt='team work'
+                    width={48} // since w-12 = 48px in Tailwind
+                    height={48} // since h-12 = 48px in Tailwind
+                    className='rounded-full'
+                  />
                 )}
                 {!testimonial.img && (
                   <div className='flex items-center justify-center w-12 h-12 rounded-full bg-gradient-to-r from-blue-500 to-green-500'>

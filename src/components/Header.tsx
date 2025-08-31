@@ -1,6 +1,7 @@
 'use client'
 
 import { Menu, X } from 'lucide-react'
+import Image from 'next/image'
 import { useEffect, useState } from 'react'
 
 const Header = () => {
@@ -43,7 +44,13 @@ const Header = () => {
           {/* Logo */}
           <div className='flex items-center space-x-2'>
             <div className='p-2 rounded-lg app-bg-image'>
-              <img src='/logos/logo.svg' alt='' className='w-6 h-6 ' />
+              <Image
+                src='/logos/logo.svg'
+                alt=''
+                width={24} // w-6
+                height={24} // h-6
+                className='w-6 h-6'
+              />
             </div>
             <span
               className={`text-2xl font-bold transition-colors duration-300 ${

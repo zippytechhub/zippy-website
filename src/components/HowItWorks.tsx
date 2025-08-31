@@ -60,8 +60,8 @@ const HowItWorks = () => {
             How to Buy Airtime and Data in 1 Minute
           </h2>
           <p className='max-w-3xl mx-auto text-xl text-gray-600'>
-            It's pretty easy to buy airtime and data bundles on Zippy. Follow these simple steps to
-            get started.
+            It&apos;s pretty easy to buy airtime and data bundles on Zippy. Follow these simple
+            steps to get started.
           </p>
         </div>
 
@@ -95,10 +95,10 @@ const HowItWorks = () => {
         {/* Bottom Message */}
         <div className='mt-16 text-center'>
           <div className='p-8 border border-green-200 bg-green-50 rounded-xl'>
-            <h3 className='mb-4 text-2xl font-bold text-green-800'>What's Next?</h3>
+            <h3 className='mb-4 text-2xl font-bold text-green-800'>What&apos;s Next?</h3>
             <p className='text-lg text-green-700'>
               Kindly wait for your airtime or data to be credited to your phone in less than a
-              minute. It's that simple with Zippy!
+              minute. It&apos;s that simple with Zippy!
             </p>
           </div>
         </div>

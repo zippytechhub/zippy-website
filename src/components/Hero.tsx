@@ -1,4 +1,5 @@
 import { ArrowRight } from 'lucide-react'
+import Image from 'next/image'
 
 const Hero = () => {
   const scrollToServices = () => {
@@ -53,14 +54,26 @@ const Hero = () => {
               <p className='mb-2 text-sm text-blue-200'>Get the app</p>
               <div className='flex flex-col gap-4 sm:flex-row'>
                 <button className='flex items-center px-8 py-4 space-x-2 text-lg font-semibold text-white transition-all duration-300 transform bg-green-500 rounded-lg shadow-lg hover:bg-green-600 hover:scale-105 hover:shadow-xl'>
-                  <img src='/logos/logo-apple.png' alt='' className='-mt-0.5 mr-2 h-6 w-6' />
+                  <Image
+                    src='/logos/logo-apple.png'
+                    alt=''
+                    width={24} // h-6
+                    height={24} // w-6
+                    className='-mt-0.5 mr-2'
+                  />
                   <span>App Store</span>
                 </button>
                 <button
                   onClick={scrollToServices}
                   className='flex items-center px-8 py-4 space-x-2 text-lg font-semibold text-white transition-all duration-300 bg-transparent border-2 border-white rounded-lg hover:bg-white hover:text-blue-900'
                 >
-                  <img src='/logos/logo-google.png' alt='' className='-mt-0.5 mr-2 h-6 w-6' />
+                  <Image
+                    src='/logos/logo-google.png'
+                    alt=''
+                    width={24} // matches w-6
+                    height={24} // matches h-6
+                    className='-mt-0.5 mr-2'
+                  />
                   <span> Google Play</span>
                   <ArrowRight className='w-5 h-5' />
                 </button>
@@ -73,9 +86,9 @@ const Hero = () => {
             </div>
           </div>
         </div>
-        <img
+        <Image
           alt='team work'
-          src='images/iphones.png'
+          src='/images/iphones.png'
           width={470}
           height={576}
           className='col-span-1 my-[5rem] h-full max-h-[30rem] -translate-y-32 md:max-h-[36rem] lg:my-0 lg:ml-auto lg:max-h-[40rem] lg:translate-y-0'
