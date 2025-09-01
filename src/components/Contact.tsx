@@ -14,7 +14,7 @@ const Contact = () => {
       icon: Mail,
       title: 'Email Support',
       description: 'Send us an email for detailed inquiries',
-      contact: 'support@zippy.ng',
+      contact: 'zippyhubb@gmail.com',
       available: 'Response within 2 hours',
     },
     {

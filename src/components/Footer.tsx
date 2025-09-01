@@ -1,4 +1,4 @@
-import { ArrowRight, Facebook, Instagram, Mail, MapPin, Phone, Twitter, Zap } from 'lucide-react'
+import { ArrowRight, Facebook, Instagram, Mail, MapPin, Phone, Zap } from 'lucide-react'
 import Image from 'next/image'
 
 const Footer = () => {
@@ -30,6 +30,25 @@ const Footer = () => {
     ],
   }
 
+  const socialLink = [
+    {
+      icons: Facebook,
+      label: 'facebook',
+      link: 'https://www.facebook.com/profile.php?id=61579163406234',
+    },
+
+    // {
+    //   icons: Instagram,
+    //   label: 'facebook',
+    //   link: 'https://www.instagram.com/zippytechhub?igsh=YzljYTk1ODg3Zg==',
+    // },
+    {
+      icons: Instagram,
+      label: 'instagram',
+      link: 'https://www.instagram.com/zippytechhub?igsh=YzljYTk1ODg3Zg==',
+    },
+  ]
+
   return (
     <footer className='text-white bg-gray-900'>
       {/* Main Footer Content */}
@@ -48,13 +67,14 @@ const Footer = () => {
               essential services. Your trusted platform for all telecom and utility payments.
             </p>
             <div className='flex space-x-4'>
-              {[Facebook, Twitter, Instagram].map((Icon, index) => (
+              {socialLink?.map((item, index) => (
                 <a
+                  target='_black'
                   key={index}
-                  href='#'
+                  href={item.link}
                   className='p-3 transition-colors duration-300 bg-gray-800 rounded-lg hover:app-gradient'
                 >
-                  <Icon className='w-5 h-5' />
+                  <item.icons className='w-5 h-5' />
                 </a>
               ))}
             </div>
@@ -108,7 +128,7 @@ const Footer = () => {
               <div className='flex items-start space-x-3'>
                 <Mail className='flex-shrink-0 w-5 h-5 mt-1 text-blue-400' />
                 <div>
-                  <p className='text-gray-300'>support@zippy.ng</p>
+                  <p className='text-gray-300'>zippyhubb@gmail.com</p>
                   <p className='text-sm text-gray-400'>Response within 2 hours</p>
                 </div>
               </div>
