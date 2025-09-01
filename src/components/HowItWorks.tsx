@@ -1,4 +1,5 @@
 import { CheckCircle, CreditCard, Download, Hash, Network, Shield, Smartphone } from 'lucide-react'
+import ScrollAnimation from './ScrollAnimation'
 
 const HowItWorks = () => {
   const steps = [
@@ -55,53 +56,60 @@ const HowItWorks = () => {
     <section id='how-it-works' className='py-20 bg-white'>
       <div className='px-4 mx-auto max-w-7xl sm:px-6 lg:px-8'>
         {/* Section Header */}
-        <div className='mb-16 text-center'>
-          <h2 className='mb-4 text-3xl font-bold text-gray-900 sm:text-4xl'>
-            How to Buy Airtime and Data in 1 Minute
-          </h2>
-          <p className='max-w-3xl mx-auto text-xl text-gray-600'>
-            It&apos;s pretty easy to buy airtime and data bundles on Zippy. Follow these simple
-            steps to get started.
-          </p>
-        </div>
+        <ScrollAnimation variantType='slideDown'>
+          <div className='mb-16 text-center'>
+            <h2 className='mb-4 text-3xl font-bold text-gray-900 sm:text-4xl'>
+              How to Buy Airtime and Data in 1 Minute
+            </h2>
+            <p className='max-w-3xl mx-auto text-xl text-gray-600'>
+              It&apos;s pretty easy to buy airtime and data bundles on Zippy. Follow these simple
+              steps to get started.
+            </p>
+          </div>
+        </ScrollAnimation>
 
         {/* Steps */}
         <div className='space-y-8'>
           {steps.map((step, index) => {
             const IconComponent = step.icon
             return (
-              <div key={index} className='flex flex-col items-start gap-8 lg:flex-row'>
-                {/* Step Number and Icon */}
-                <div className='flex items-center space-x-4 lg:min-w-[300px]'>
-                  <div className='flex items-center justify-center w-12 h-12 text-lg font-bold text-white rounded-full app-bg-image'>
-                    {index + 1}
+              <ScrollAnimation key={index} delay={index * 200} variantType='slideLeft'>
+                <div className='flex flex-col items-start gap-8 lg:flex-row'>
+                  {/* Step Number and Icon */}
+                  <div className='flex items-center space-x-4 lg:min-w-[300px]'>
+                    <div className='flex items-center justify-center w-12 h-12 text-lg font-bold text-white rounded-full app-bg-image'>
+                      {index + 1}
+                    </div>
+                    <div className='p-4 rounded-lg dark-bg'>
+                      <IconComponent className='w-8 h-8 dark-text' />
+                    </div>
                   </div>
-                  <div className='p-4 rounded-lg dark-bg'>
-                    <IconComponent className='w-8 h-8 dark-text' />
-                  </div>
-                </div>
 
-                {/* Content */}
-                <div className='flex-1'>
-                  <h3 className='mb-2 text-xl font-bold text-gray-900'>{step.title}</h3>
-                  <p className='mb-3 font-medium text-gray-600'>{step.description}</p>
-                  <p className='leading-relaxed text-gray-500'>{step.detail}</p>
+                  {/* Content */}
+                  <div className='flex-1'>
+                    <h3 className='mb-2 text-xl font-bold text-gray-900'>{step.title}</h3>
+                    <p className='mb-3 font-medium text-gray-600'>{step.description}</p>
+                    <p className='leading-relaxed text-gray-500'>{step.detail}</p>
+                  </div>
                 </div>
-              </div>
+              </ScrollAnimation>
             )
           })}
         </div>
 
         {/* Bottom Message */}
-        <div className='mt-16 text-center'>
-          <div className='p-8 border border-green-200 bg-green-50 rounded-xl'>
-            <h3 className='mb-4 text-2xl font-bold text-green-800'>What&apos;s Next?</h3>
-            <p className='text-lg text-green-700'>
-              Kindly wait for your airtime or data to be credited to your phone in less than a
-              minute. It&apos;s that simple with Zippy!
-            </p>
+
+        <ScrollAnimation variantType='slideDown'>
+          <div className='mt-16 text-center'>
+            <div className='p-8 border border-green-200 bg-green-50 rounded-xl'>
+              <h3 className='mb-4 text-2xl font-bold text-green-800'>What&apos;s Next?</h3>
+              <p className='text-lg text-green-700'>
+                Kindly wait for your airtime or data to be credited to your phone in less than a
+                minute. It&apos;s that simple with Zippy!
+              </p>
+            </div>
           </div>
-        </div>
+        </ScrollAnimation>
       </div>
     </section>
   )

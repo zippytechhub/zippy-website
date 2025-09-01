@@ -2,6 +2,7 @@
 
 import { ChevronDown, ChevronUp } from 'lucide-react'
 import { useState } from 'react'
+import ScrollAnimation from './ScrollAnimation'
 
 const FAQ = () => {
   const [openIndex, setOpenIndex] = useState<number | null>(null)
@@ -57,42 +58,43 @@ const FAQ = () => {
     <section id='faq' className='py-20 bg-gray-50'>
       <div className='max-w-4xl px-4 mx-auto sm:px-6 lg:px-8'>
         {/* Section Header */}
-        <div className='mb-16 text-center'>
-          <h2 className='mb-4 text-3xl font-bold text-gray-900 sm:text-4xl'>
-            Frequently Asked Questions
-          </h2>
-          <p className='text-xl text-gray-600'>
-            Find answers to common questions about using Zippy for your digital payments.
-          </p>
-        </div>
+        <ScrollAnimation variantType='slideDown'>
+          <div className='mb-16 text-center'>
+            <h2 className='mb-4 text-3xl font-bold text-gray-900 sm:text-4xl'>
+              Frequently Asked Questions
+            </h2>
+            <p className='text-xl text-gray-600'>
+              Find answers to common questions about using Zippy for your digital payments.
+            </p>
+          </div>
+        </ScrollAnimation>
 
         {/* FAQ Items */}
         <div className='space-y-4'>
           {faqs.map((faq, index) => (
-            <div
-              key={index}
-              className='overflow-hidden bg-white border border-gray-100 shadow-lg rounded-xl'
-            >
-              <button
-                onClick={() => toggleFAQ(index)}
-                className='flex items-center justify-between w-full px-8 py-6 text-left transition-colors duration-200 hover:bg-gray-50'
-              >
-                <h3 className='pr-4 text-lg font-semibold text-gray-900'>{faq.question}</h3>
-                {openIndex === index ? (
-                  <ChevronUp className='flex-shrink-0 w-5 h-5 dark-text' />
-                ) : (
-                  <ChevronDown className='flex-shrink-0 w-5 h-5 text-gray-400' />
-                )}
-              </button>
+            <ScrollAnimation key={index} delay={index * 200} variantType='slideDown'>
+              <div className='overflow-hidden bg-white border border-gray-100 shadow-lg rounded-xl'>
+                <button
+                  onClick={() => toggleFAQ(index)}
+                  className='flex items-center justify-between w-full px-8 py-6 text-left transition-colors duration-200 hover:bg-gray-50'
+                >
+                  <h3 className='pr-4 text-lg font-semibold text-gray-900'>{faq.question}</h3>
+                  {openIndex === index ? (
+                    <ChevronUp className='flex-shrink-0 w-5 h-5 dark-text' />
+                  ) : (
+                    <ChevronDown className='flex-shrink-0 w-5 h-5 text-gray-400' />
+                  )}
+                </button>
 
-              {openIndex === index && (
-                <div className='px-8 pb-6'>
-                  <div className='pt-6 border-t border-gray-100'>
-                    <p className='leading-relaxed text-gray-600'>{faq.answer}</p>
+                {openIndex === index && (
+                  <div className='px-8 pb-6'>
+                    <div className='pt-6 border-t border-gray-100'>
+                      <p className='leading-relaxed text-gray-600'>{faq.answer}</p>
+                    </div>
                   </div>
-                </div>
-              )}
-            </div>
+                )}
+              </div>
+            </ScrollAnimation>
           ))}
         </div>
 

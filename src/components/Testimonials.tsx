@@ -1,5 +1,6 @@
 import { Quote, Star } from 'lucide-react'
 import Image from 'next/image'
+import ScrollAnimation from './ScrollAnimation'
 
 const Testimonials = () => {
   const testimonials = [
@@ -34,13 +35,13 @@ const Testimonials = () => {
       text: 'Been using Zippy for over a year now. Never had any issues. The app is user-friendly and transactions are always successful. Highly recommended!',
       avatar: 'IA',
     },
-    {
-      name: 'Miracle Edwin',
-      location: 'Niger, Nigeria',
-      rating: 5,
-      text: 'As a student, I need affordable data bundles and Zippy delivers exactly that. The educational e-pins service is also very convenient for my exams.',
-      avatar: 'ME',
-    },
+    // {
+    //   name: 'Miracle Edwin',
+    //   location: 'Niger, Nigeria',
+    //   rating: 5,
+    //   text: 'As a student, I need affordable data bundles and Zippy delivers exactly that. The educational e-pins service is also very convenient for my exams.',
+    //   avatar: 'ME',
+    // },
     {
       name: 'Lucy Greg',
       location: 'Jos, Nigeria',
@@ -54,60 +55,65 @@ const Testimonials = () => {
     <section id='testimonials' className='py-20 bg-gradient-to-br from-blue-50 to-green-50'>
       <div className='px-4 mx-auto max-w-7xl sm:px-6 lg:px-8'>
         {/* Section Header */}
-        <div className='mb-16 text-center'>
-          <h2 className='mb-4 text-3xl font-bold text-gray-900 sm:text-4xl'>
-            What Our Customers Say
-          </h2>
-          <p className='max-w-3xl mx-auto text-xl text-gray-600'>
-            Join thousands of satisfied users who trust Zippy for their digital payment needs.
-          </p>
-        </div>
+        <ScrollAnimation variantType='slideDown'>
+          <div className='mb-16 text-center'>
+            <h2 className='mb-4 text-3xl font-bold text-gray-900 sm:text-4xl'>
+              What Our Customers Say
+            </h2>
+            <p className='max-w-3xl mx-auto text-xl text-gray-600'>
+              Join thousands of satisfied users who trust Zippy for their digital payment needs.
+            </p>
+          </div>
+        </ScrollAnimation>
 
         {/* Testimonials Grid */}
         <div className='grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3'>
           {testimonials.map((testimonial, index) => (
-            <div
-              key={index}
-              className='relative p-8 transition-all duration-300 transform bg-white border border-gray-100 shadow-lg rounded-xl hover:shadow-xl hover:-translate-y-1'
-            >
-              {/* Quote Icon */}
-              <div className='absolute top-4 right-4'>
-                <Quote className='w-6 h-6 text-blue-200' />
-              </div>
+            <ScrollAnimation key={index} delay={index * 200} variantType='slideDown'>
+              <div className='relative p-8 transition-all duration-300 transform bg-white border border-gray-100 shadow-lg rounded-xl hover:shadow-xl hover:-translate-y-1'>
+                {/* Quote Icon */}
+                <div className='absolute top-4 right-4'>
+                  <Quote className='w-6 h-6 text-blue-200' />
+                </div>
 
-              {/* Rating */}
-              <div className='flex mb-4 space-x-1'>
-                {[...Array(testimonial.rating)].map((_, i) => (
-                  <Star key={i} className='w-5 h-5 text-yellow-400 fill-current' />
-                ))}
-              </div>
+                {/* Rating */}
+                <div className='flex mb-4 space-x-1'>
+                  {[...Array(testimonial.rating)].map((_, i) => (
+                    <Star key={i} className='w-5 h-5 text-yellow-400 fill-current' />
+                  ))}
+                </div>
 
-              {/* Testimonial Text */}
-              <p className='mb-6 leading-relaxed text-gray-700'>&ldquo;{testimonial.text}&ldquo;</p>
+                {/* Testimonial Text */}
+                <p className='mb-6 leading-relaxed text-gray-700'>
+                  &ldquo;{testimonial.text}&ldquo;
+                </p>
 
-              {/* User Info */}
-              <div className='flex items-center space-x-4'>
-                {testimonial.img && (
-                  <Image
-                    src={testimonial.img}
-                    alt='team work'
-                    width={48} // since w-12 = 48px in Tailwind
-                    height={48} // since h-12 = 48px in Tailwind
-                    className='rounded-full'
-                  />
-                )}
-                {!testimonial.img && (
-                  <div className='flex items-center justify-center w-12 h-12 rounded-full bg-gradient-to-r from-blue-500 to-green-500'>
-                    <span className='text-sm font-bold text-white'>{testimonial.avatar}</span>
+                {/* User Info */}
+                <div className='flex items-center space-x-4'>
+                  {testimonial.img && (
+                    <div className='size-12 overflow-hidden rounded-full'>
+                      <Image
+                        src={testimonial.img}
+                        alt='team work'
+                        width={48} // since w-12 = 48px in Tailwind
+                        height={48} // since h-12 = 48px in Tailwind
+                        // className='!rounded-full bg-cover'
+                      />
+                    </div>
+                  )}
+                  {!testimonial.img && (
+                    <div className='flex items-center justify-center w-12 h-12 rounded-full bg-gradient-to-r from-blue-500 to-green-500'>
+                      <span className='text-sm font-bold text-white'>{testimonial.avatar}</span>
+                    </div>
+                  )}
+
+                  <div>
+                    <h4 className='font-semibold text-gray-900'>{testimonial.name}</h4>
+                    <p className='text-sm text-gray-500'>{testimonial.location}</p>
                   </div>
-                )}
-
-                <div>
-                  <h4 className='font-semibold text-gray-900'>{testimonial.name}</h4>
-                  <p className='text-sm text-gray-500'>{testimonial.location}</p>
                 </div>
               </div>
-            </div>
+            </ScrollAnimation>
           ))}
         </div>
 
@@ -119,10 +125,12 @@ const Testimonials = () => {
             { number: '99.9%', label: 'Success Rate' },
             { number: '24/7', label: 'Support' },
           ].map((stat, index) => (
-            <div key={index} className='text-center'>
-              <div className='mb-2 text-3xl font-bold sm:text-4xl dark-text'>{stat.number}</div>
-              <div className='font-medium text-gray-600'>{stat.label}</div>
-            </div>
+            <ScrollAnimation key={index} delay={index * 200} variantType='slideLeft'>
+              <div className='text-center'>
+                <div className='mb-2 text-3xl font-bold sm:text-4xl dark-text'>{stat.number}</div>
+                <div className='font-medium text-gray-600'>{stat.label}</div>
+              </div>
+            </ScrollAnimation>
           ))}
         </div>
       </div>
